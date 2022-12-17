@@ -1,8 +1,10 @@
 package com.progtd2.controller;
 
+import com.progtd2.controller.mapper.MatchMapper;
+import com.progtd2.controller.response.MatchResponse;
+import com.progtd2.model.Match;
 import com.progtd2.model.Sponsor;
 import com.progtd2.service.MatchService;
-import com.progtd2.service.SponsorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +15,13 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping("sponsor")
+@RequestMapping("match")
 @AllArgsConstructor
-public class SponsorController {
-  private final SponsorService service;
-
+public class MatchController {
+  private final MatchService service;
+  private final MatchMapper mapper;
   @GetMapping
-  public List<Sponsor> findAll(){
-    return service.getAll();
+  public List<MatchResponse> findAll(){
+    return mapper.toDomain(service.getAll());
   }
 }
