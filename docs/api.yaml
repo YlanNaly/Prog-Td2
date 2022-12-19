@@ -1,9 +1,182 @@
 openapi: 3.0.3
 info:
-  title: Title
+  title: Play against TD
   description: Title
   version: 1.0.0
 servers:
-  - url: 'https'
+  - url: 'http://localhost:8080'
 paths:
-  
+  /match:
+    get:
+      summary: "GET match"
+      tags:
+        - Play_against
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Match'
+  /player:
+    get:
+      summary: "GET player"
+      tags:
+        - Player
+      operationId: "findAll"
+      parameters:
+        - name: "page"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "pageSize"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Player'
+  /sponsor:
+    get:
+      summary: "GET sponsor"
+      operationId: "findAll"
+      tags:
+        - Sponsor
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+  /team:
+    get:
+      summary: "GET team"
+      tags:
+        - Team
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Team'
+components:
+  schemas :
+    Player :
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name :
+          type: string
+          example: Messi
+        number :
+          type: integer
+          example: 10
+        team :
+          type: object
+          items:
+            $ref: '#/components/schemas/Team'
+    CreatePlayer:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: Messi
+        number:
+          type: integer
+          example: 10
+        idTeam:
+          type: number
+          example: 1
+    Team :
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name :
+          type : string
+          example: 'PSG'
+    Sponsor :
+      type: object
+      properties:
+        id:
+          type: number
+          example: 2
+        name:
+          type: string
+          example: 'Modrigos'
+        teamList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+    CreateSponsor:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 2
+        name:
+          type: string
+          example: 'None'
+        idTeam:
+          type: number
+          example: 1
+    Match:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 2
+        datetime:
+          type: string
+          format: date
+          example: '02-14-03'
+        stadium:
+          type: string
+          example: 'Camp nou'
+        teamList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+    CreateMatch:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 2
+        datetime:
+          type: string
+          format: date
+          example: '02-14-03'
+        stadium:
+          type: string
+          example: 'Camp nou'
+        teamList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'

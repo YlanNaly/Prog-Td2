@@ -2,8 +2,6 @@ package com.progtd2.controller;
 
 import com.progtd2.controller.mapper.MatchMapper;
 import com.progtd2.controller.response.MatchResponse;
-import com.progtd2.model.Match;
-import com.progtd2.model.Sponsor;
 import com.progtd2.service.MatchService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
