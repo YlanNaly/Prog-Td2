@@ -4,8 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +30,11 @@ public class Match implements Serializable {
   private Date datetime;
   private String stadium;
 
-  @OneToMany
-  private List<Team> teams;
+  @ManyToOne
+  @JoinColumn(name = "teamA_id")
+  private Team teamA;
+
+  @ManyToOne
+  @JoinColumn(name = "teamB_id")
+  private Team teamB;
 }
