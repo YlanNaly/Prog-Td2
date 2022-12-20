@@ -2,9 +2,6 @@ package com.progtd2.controller;
 
 import com.progtd2.controller.mapper.PlayerMapper;
 import com.progtd2.controller.response.PlayerResponse;
-import com.progtd2.model.Player;
-import com.progtd2.model.Sponsor;
-import com.progtd2.service.MatchService;
 import com.progtd2.service.PlayerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,6 +24,6 @@ public class PlayerController {
           @RequestParam int page,
           @RequestParam int pageSize
   ){
-    return mapper.toDomain(service.getAll(page, pageSize));
+    return mapper.toRest(service.getAll(page, pageSize));
   }
 }

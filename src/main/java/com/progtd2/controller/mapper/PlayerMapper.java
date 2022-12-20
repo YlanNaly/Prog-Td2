@@ -17,7 +17,7 @@ public class PlayerMapper {
             .build();
   }
 
-  public List<PlayerResponse> toDomain(List<Player> players){
+  public List<PlayerResponse> toRest(List<Player> players){
     return players.stream().map(this::toRest).toList();
   }
 }
