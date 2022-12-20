@@ -1,0 +1,21 @@
+package com.progtd2.controller.response;
+
+import com.progtd2.model.Team;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+public class MatchResponse {
+  private Long id;
+  private Date datetime;
+  private Team teamA;
+  private Team teamB;
+}
