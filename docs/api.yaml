@@ -159,10 +159,14 @@ components:
         stadium:
           type: string
           example: 'Camp nou'
-        teamList:
-          type: array
-          items:
-            $ref: '#/components/schemas/Team'
+        teamA:
+          $ref: '#/components/schemas/Team'
+        teamB:
+          $ref: '#/components/schemas/Team'
+        scoreA:
+          $ref: '#/components/schemas/Goal'
+        scoreB:
+          $ref: '#/components/schemas/Goal'
     CreateMatch:
       type: object
       properties:
@@ -180,3 +184,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Team'
+    Goal:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        scoring_time :
+          type: string
+          format: time
+          example: '10:00'
+        scorer_name:
+          type: string
+          example: 'Lukaku'
+        match :
+          $ref: '#/components/schemas/Match'
