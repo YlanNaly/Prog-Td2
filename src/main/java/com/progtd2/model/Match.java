@@ -37,4 +37,10 @@ public class Match implements Serializable {
   @ManyToOne
   @JoinColumn(name = "teamB_id")
   private Team teamB;
+
+  @OneToMany
+  private List<Goal> score_a;
+
+  @OneToMany
+  private List<Goal> score_b;
 }

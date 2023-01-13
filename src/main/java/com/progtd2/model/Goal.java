@@ -1,37 +1,39 @@
 package com.progtd2.model;
 
-import jakarta.annotation.Nullable;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Entity
-@Table(name = "player")
 @Builder
-public class Player implements Serializable {
+@AllArgsConstructor
+@Getter
+@Setter
+@Entity
+public class Goal implements Serializable {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  @Column(nullable = false)
-  private String name;
-  @Column(nullable = false)
-  private int number;
+  private  Long id;
+  private String scoring_time;
+
   @ManyToOne
-  private Team team;
+  @JoinColumn(name = "player_id")
+  private Player scorer;
 }

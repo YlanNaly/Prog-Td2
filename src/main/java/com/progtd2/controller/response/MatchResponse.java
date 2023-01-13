@@ -1,5 +1,6 @@
 package com.progtd2.controller.response;
 
+import com.progtd2.model.Goal;
 import com.progtd2.model.Team;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,4 +19,6 @@ public class MatchResponse {
   private Date datetime;
   private Team teamA;
   private Team teamB;
+  private Goal score_a;
+  private Goal score_b;
 }
